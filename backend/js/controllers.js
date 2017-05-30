@@ -719,7 +719,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
             NavigationService.boxCall("Questions/saveQuestions", data1, function (data) {
-                alert("hi");
+
                 data1 = {};
                 data1.questionSet = [];
                 console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");

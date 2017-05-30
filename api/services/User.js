@@ -143,15 +143,17 @@ var model = {
         });
     },
 
-    getUser :function(data,callback){
+    getUser: function (data, callback) {
         console.log("data--", data)
-        User.find().exec(function (err, found) {
+        User.findOne({
+            _id: data._id
+        }).exec(function (err, found) {
             if (err) {
                 // console.log(err);
                 callback(err, null);
             } else {
                 if (found) {
-                    
+
                     callback(null, found);
 
                 } else {
@@ -163,7 +165,7 @@ var model = {
 
         });
     }
-    
+
 
 };
 module.exports = _.assign(module.exports, exports, model);
