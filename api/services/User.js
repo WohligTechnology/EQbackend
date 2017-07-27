@@ -11,6 +11,15 @@ var schema = new Schema({
         type: String,
         validate: validators.isEmail()
     },
+    college: {
+        type: String
+    },
+    course: {
+        type: String
+    },
+    complitionYear: {
+        type: String
+    },
     dob: {
         type: Date
     },
