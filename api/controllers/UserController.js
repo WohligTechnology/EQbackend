@@ -69,6 +69,13 @@ var controller = {
             res.callback("Please provide Valid AccessToken", null);
         }
     },
+    profileFromPhoneNo: function (req, res) {
+        if (req.body && req.body.phone) {
+            User.profileFromPhoneNo(req.body, res.callback);
+        } else {
+            res.callback("Please provide Valid AccessToken", null);
+        }
+    },
     pdf: function (req, res) {
 
         var html = fs.readFileSync('./views/pdf/demo.ejs', 'utf8');

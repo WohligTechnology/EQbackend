@@ -1,24 +1,27 @@
 var schema = new Schema({
     firstname: {
         type: String,
-        required: true
+
     },
     lastname: {
         type: String,
-        required: true
+
     },
     email: {
         type: String,
         validate: validators.isEmail()
     },
     college: {
-        type: String
+        type: String,
+        default: ""
     },
     course: {
-        type: String
+        type: String,
+        default: ""
     },
     complitionYear: {
-        type: String
+        type: String,
+        default: ""
     },
     dob: {
         type: Date
@@ -40,6 +43,10 @@ var schema = new Schema({
         default: ""
     },
     otp: {
+        type: String,
+        default: ""
+    },
+    gender: {
         type: String,
         default: ""
     },
@@ -143,6 +150,22 @@ var model = {
             }
         });
     },
+
+    profileFromPhoneNo: function (data, callback, getGoogle) {
+
+        User.findOne({
+            mobile: data.phone
+        }).exec(function (err, data) {
+            if (err) {
+                callback(err);
+            } else if (data) {
+                callback(null, data);
+            } else {
+                callback("No Data Found", data);
+            }
+        });
+    },
+
     updateAccessToken: function (id, accessToken) {
         User.findOne({
             "_id": id
