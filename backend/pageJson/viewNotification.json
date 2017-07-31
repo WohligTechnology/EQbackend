@@ -1,0 +1,51 @@
+{
+    "title": "User",
+    "description": "Notifications",
+    "pageType": "view",
+    "sendIdWithCreate": true,
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Title",
+            "isSort": "",
+            "tableRef": "title"
+        },
+        {
+            "name": "Content",
+            "isSort": "",
+            "tableRef": "content"
+        }
+    ],
+    "action": [{
+        "name": "edit",
+        "icon": "fa-pencil",
+        "buttonClass": "btn-primary",
+        "type": "page",
+        "action": "editNotification",
+        "fieldsToSend": {
+            "_id": "_id"
+        }
+    }, {
+        "name": "delete",
+        "icon": "fa-trash",
+        "buttonClass": "btn-danger",
+        "type": "apiCallConfirm",
+        "title": "Delete Question",
+        "content": "Are you sure you want to delete Notification?",
+        "api": "Notification/deleteNotificationFromUsers",
+        "fieldsToSend": {
+            "name": "_id",
+            "value": "_id"
+        }
+    }],
+    "button": [{
+        "name": "Create",
+        "icon": "plus",
+        "class": "btn-success",
+        "type": "page",
+        "action": "createNotification"
+    }],
+    "apiCall": {
+        "url": "Notification/search",
+        "params": "_id"
+    }
+}

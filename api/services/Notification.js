@@ -9,11 +9,15 @@ require('mongoose-middleware').initialize(mongoose);
 var Schema = mongoose.Schema;
 
 var schema = new Schema({
-    notification: {
+    title: {
         type: String,
         required: true,
-        unique: true,
-        uniqueCaseInsensitive: true
+
+    },
+    content: {
+        type: String,
+        required: true,
+
     }
 });
 
@@ -23,5 +27,61 @@ schema.plugin(timestamps);
 module.exports = mongoose.model('Notification', schema);
 
 var exports = _.cloneDeep(require("sails-wohlig-service")(schema));
-var model = {};
+var model = {
+    addNotificationToUsers: function (data, callback) {
+        Notification.saveData(data, function (err, notification) {
+            if (notification) {
+                User.update({}, {
+                    $push: {
+                        'notification': notification._id
+                    }
+                }, {
+                    multi: true
+                }).exec(function (err, found) {
+                    if (err) {
+                        callback(err, null);
+                    } else if (_.isEmpty(found)) {
+                        callback(null, "noDataound");
+                    } else {
+                        callback(null, found);
+                    }
+
+                });
+            } else {
+                callback(err, null);
+            }
+        });
+    },
+    deleteNotificationFromUsers: function (data, callback) {
+        console.log("data: ", data);
+        Notification.remove({
+            _id: mongoose.Types.ObjectId(data._id)
+        }).exec(function (err, removed) {
+            if (removed) {
+                User.update({
+                    notification: mongoose.Types.ObjectId(data._id)
+                }, {
+                    $pull: {
+                        notification: mongoose.Types.ObjectId(data._id)
+                    }
+                }, {
+                    multi: true
+                }).exec(function (err, found) {
+                    if (err) {
+                        callback(err, null);
+                    } else if (_.isEmpty(found)) {
+                        callback(null, "noDataound");
+                    } else {
+
+                        callback(null, found);
+                    }
+
+                });
+            } else {
+                callback(err, null);
+            }
+        });
+    }
+
+};
 module.exports = _.assign(module.exports, exports, model);

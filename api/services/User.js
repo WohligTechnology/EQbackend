@@ -7,6 +7,11 @@ var schema = new Schema({
         type: String,
 
     },
+    notification: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Notification',
+        index: true
+    }],
     email: {
         type: String,
         validate: validators.isEmail()
@@ -77,6 +82,7 @@ schema.plugin(deepPopulate, {
         }
     }
 });
+
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 
@@ -131,6 +137,21 @@ var model = {
                 data.save(function () {});
                 callback(err, data);
             }
+        });
+    },
+    getNotificationForUser: function (data, callback) {
+        User.findOne({
+            _id: mongoose.Types.ObjectId(data._id)
+        }).deepPopulate('notification').exec(function (err, found) {
+            console.log("Found: ", found);
+            if (err) {
+                callback(err, null);
+            } else if (_.isEmpty(found)) {
+                callback(null, "noDataound");
+            } else {
+                callback(null, found);
+            }
+
         });
     },
     profile: function (data, callback, getGoogle) {

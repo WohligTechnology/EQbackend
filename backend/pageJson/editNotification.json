@@ -1,0 +1,55 @@
+{
+    "title": "Edit User",
+    "name": "User",
+    "jsonPage": "viewUser",
+    "desciption": "",
+    "pageType": "edit",
+    "urlFields": ["_id"],
+    "fields": [{
+            "name": "Title",
+            "type": "text",
+            "tableRef": "title",
+            "placeholder": "Enter Notification title",
+            "id": "title",
+            "validation": ["required", "trim", ""],
+            "url": ""
+        },
+        {
+            "name": "content",
+            "type": "textarea",
+            "tableRef": "content",
+            "placeholder": "Enter Notification content",
+            "id": "content",
+            "validation": ["required", "trim", ""],
+            "url": ""
+        }
+    ],
+    "action": [{
+        "name": "submit",
+        "action": "submitNotification",
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewNotification"
+            }
+        }
+    }, {
+        "name": "cancel",
+        "sideMenuRedirect": true,
+        "stateName": {
+            "page": "page",
+            "json": {
+                "id": "viewNotification"
+            }
+        }
+    }],
+    "apiCall": {
+        "url": "Notification/save",
+        "params": "_id"
+    },
+    "preApi": {
+        "url": "Notification/getOne",
+        "params": "_id"
+    }
+
+}

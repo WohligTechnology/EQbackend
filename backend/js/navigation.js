@@ -22,6 +22,12 @@ var navigationservice = angular.module('navigationservice', [])
                 classis: "active",
                 sref: "#!/page/viewResults//",
                 icon: "phone"
+            },
+            {
+                name: "Notification",
+                classis: "active",
+                sref: "#!/page/viewNotification//",
+                icon: "phone"
             }
         ];
 

@@ -1,5 +1,17 @@
 module.exports = _.cloneDeep(require("sails-wohlig-controller"));
 var controller = {
+    getNotificationForUser: function (req, res) {
+        if (req.body) {
+            User.getNotificationForUser(req.body, res.callback);
+        } else {
+            res.json({
+                value: false,
+                data: {
+                    message: "Invalid Request"
+                }
+            })
+        }
+    },
     login: function (req, res) {
         if (req.body && req.body.email && req.body.email !== '' && req.body.password && req.body.password !== '') {
             User.doLogin(req.body, res.callback);
