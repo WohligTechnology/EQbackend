@@ -5,7 +5,11 @@ var schema = new Schema({
         selectedAnswer: String,
         marks: Number
     }],
-    testName: String,
+    testName: {
+        type: Schema.Types.ObjectId,
+        ref: 'Questions',
+        index: true
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -20,11 +24,18 @@ schema.plugin(deepPopulate, {
         }
     }
 });
+schema.plugin(deepPopulate, {
+    populate: {
+        'testName': {
+            select: '_id name'
+        }
+    }
+});
 schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 module.exports = mongoose.model('Results', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "user", "user"));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "user", "user", "testName", "testName"));
 var model = {
 
     findOneResults: function (data, callback) {
