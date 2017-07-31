@@ -5,11 +5,46 @@
     "desciption": "",
     "pageType": "resultedit",
     "urlFields": ["Question"],
-    "fields": [ {
-        "name": "Test Name",
-        "isSort": "",
-        "tableRef": "testName"
-    }],
+    "fields": [{
+            "name": "Test Name",
+            "isSort": "",
+            "tableRef": "testName"
+        },
+        {
+            "name": "Result",
+            "type": "box",
+            "tableRef": "result",
+            "validation": ["required", "trim", ""],
+            "fields": [{
+                "name": "Question",
+                "type": "text",
+                "tableRef": "question",
+                "placeholder": "",
+                "id": "question",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Selected Answer",
+                "type": "text",
+                "tableRef": "selectedAnswer",
+                "placeholder": "",
+                "id": "selectedAnswer",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }, {
+                "name": "Marks",
+                "type": "text",
+                "tableRef": "marks",
+                "placeholder": "",
+                "id": "marks",
+                "validation": ["", "trim", ""],
+                "url": "",
+                "onView": true
+            }]
+        }
+    ],
     "action": [{
         "name": "submit",
         "action": "submitResult",
