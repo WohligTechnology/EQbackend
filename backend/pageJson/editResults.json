@@ -1,16 +1,19 @@
 {
-    "title": "User Answer List",
-    "name": "Question",
-    "jsonPage": "viewQuestion",
+    "title": "Edit Result",
+    "name": "Result",
+    "jsonPage": "viewResult",
     "desciption": "",
-    "pageType": "resultedit",
-    "urlFields": ["Question"],
+    "pageType": "edit",
+    "urlFields": ["_id"],
     "fields": [{
             "name": "Test Name",
-            "isSort": "",
-            "tableRef": "testName"
-        },
-        {
+            "type": "text",
+            "tableRef": "testName",
+            "placeholder": "Enter testName",
+            "id": "testName",
+            "validation": ["required", "trim", ""],
+            "url": ""
+        }, {
             "name": "Result",
             "type": "box",
             "tableRef": "result",
@@ -19,7 +22,7 @@
                 "name": "Question",
                 "type": "text",
                 "tableRef": "question",
-                "placeholder": "",
+                "placeholder": "Enter question",
                 "id": "question",
                 "validation": ["", "trim", ""],
                 "url": "",
@@ -27,23 +30,24 @@
             }, {
                 "name": "Selected Answer",
                 "type": "text",
-                "tableRef": "selectedAnswer",
-                "placeholder": "",
+                "tableRef": "Selected Answer",
+                "placeholder": "Enter selectedAnswer",
                 "id": "selectedAnswer",
                 "validation": ["", "trim", ""],
                 "url": "",
                 "onView": true
             }, {
-                "name": "Marks",
+                "name": "marks",
                 "type": "text",
                 "tableRef": "marks",
-                "placeholder": "",
+                "placeholder": "Enter marks",
                 "id": "marks",
                 "validation": ["", "trim", ""],
                 "url": "",
                 "onView": true
             }]
         }
+
     ],
     "action": [{
         "name": "submit",
@@ -51,7 +55,7 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResults"
+                "id": "viewResult"
             }
         }
     }, {
@@ -60,16 +64,16 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResults"
+                "id": "viewResult"
             }
         }
     }],
     "apiCall": {
-        "url": "Results/save",
+        "url": "Result/save",
         "params": "_id"
     },
     "preApi": {
-        "url": "Results/getOne",
+        "url": "Result/getOne",
         "params": "_id"
     }
 
