@@ -3,7 +3,7 @@
     "name": "Results",
     "jsonPage": "viewResults",
     "desciption": "",
-    "pageType": "edit",
+    "pageType": "resultedit",
     "urlFields": ["_id"],
     "fields": [{
             "name": "Result",

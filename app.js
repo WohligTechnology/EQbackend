@@ -53,7 +53,8 @@ mongoose.connect('mongodb://localhost:27017/' + database, function (err) {
     } catch (e0) {
         try {
             rc = require('sails/node_modules/rc');
-        } catch (e1) {database
+        } catch (e1) {
+            database
             console.error('Could not find dependency: `rc`.');
             console.error('Your `.sailsrc` file(s) will be ignored.');
             console.error('To resolve this, run:');

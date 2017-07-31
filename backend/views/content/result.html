@@ -1,4 +1,4 @@
-<div ng-controller="ResultDetailCtrl">
+<div ng-controller="DetailCtrl">
     <div class="breadcrumbs">
         <ul>
             <li>
@@ -43,7 +43,7 @@
                                                 <!--<a class=" btn btn-primary pull-right ml-10" ng-click="addBoxQuestion(json.keyword._id)">Add New</a>
                                                 <span style="float:right;width:200px; "><input type="search " class="form-control" placeholder="Search... " ng-model="search.text "> </span>-->
                                             </div>
-                                            <div class="sec">
+                                            <!--<div class="sec">
                                                 <div>
                                                     <table class="table table-input ">
                                                         <thead>
@@ -52,7 +52,7 @@
                                                                 <th>Question</th>
                                                                 <th>Selected Answer</th>
                                                                 <th>Marks</th>
-                                                                <!--<th width="150px ">Actions</th>-->
+                                                                <!--<th width="150px ">Actions</th>
                                                             </tr>
                                                             <thead>
                                                                 <tr ng-repeat="photo in tableData.result">
@@ -70,29 +70,36 @@
                                                                         <!--<a class="btn btn-primary" ng-click="editBoxCustomQuestion(photo,json.keyword._id)">
                                                                             <i class="fa fa-pencil"></i>
                                                                         </a>-->
-                                                                        <!--<a class="btn btn-danger" ng-click="removeAnswer(photo._id,json.keyword._id)">
+                                            <!--<a class="btn btn-danger" ng-click="removeAnswer(photo._id,json.keyword._id)">
                                                                             <i class="fa fa-trash"></i>
-                                                                        </a>-->
+                                                                        </a>
                                                                     </td>
                                                                 </tr>
                                                                 <tbody>
                                                                 </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
+                                            </div>-->
+                                            <form name="detailForm" role="form" class="sec ng-pristine ng-valid">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <detail-field type="field" form="detailForm" value="item" ng-repeat="field in json.json.fields" data="data"></detail-field>
+                                                    </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <div>
                                     </div>
-                                <!--</div>-->
-                                <div class="text-center mt20 odd-even-button ">
-                                    <!--<button class="btn btn-default " type="submit " ng-click="saveData(data) " ng-disabled="detailForm.$invalid ">Save</button>-->
-                                    <button class="btn btn-default " ng-click="onCancel(json.json.action[1].stateName) ">Cancel</button>
-                                </div>
+                                    <!--</div>-->
+                                    <div class="text-center mt20 odd-even-button ">
+                                        <!--<button class="btn btn-default " type="submit " ng-click="saveData(data) " ng-disabled="detailForm.$invalid ">Save</button>-->
+                                        <button class="btn btn-default " ng-click="onCancel(json.json.action[1].stateName) ">Cancel</button>
+                                    </div>
                         </form>
+                        </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
