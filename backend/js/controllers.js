@@ -501,6 +501,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 text: ""
             };
         }
+        if ($scope.type.type == "result") {
+            console.log("Edit formData: ", $scope.value);
+
+            if (!_.isArray($scope.formData[$scope.type.tableRef]) && $scope.formData[$scope.type.tableRef] === '') {
+                $scope.formData[$scope.type.tableRef] = [];
+                $scope.model = [];
+            } else {
+                if ($scope.formData[$scope.type.tableRef]) {
+                    $scope.model = $scope.formData[$scope.type.tableRef];
+                }
+            }
+            $scope.search = {
+                text: ""
+            };
+        }
         $scope.state = "";
         $scope.createBox = function (state) {
             $scope.state = state;

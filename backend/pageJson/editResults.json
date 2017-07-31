@@ -1,21 +1,13 @@
 {
     "title": "Edit Result",
-    "name": "Result",
-    "jsonPage": "viewResult",
+    "name": "Results",
+    "jsonPage": "viewResults",
     "desciption": "",
     "pageType": "edit",
     "urlFields": ["_id"],
     "fields": [{
-            "name": "Test Name",
-            "type": "text",
-            "tableRef": "testName",
-            "placeholder": "Enter testName",
-            "id": "testName",
-            "validation": ["required", "trim", ""],
-            "url": ""
-        }, {
             "name": "Result",
-            "type": "box",
+            "type": "result",
             "tableRef": "result",
             "validation": ["required", "trim", ""],
             "fields": [{
@@ -30,7 +22,7 @@
             }, {
                 "name": "Selected Answer",
                 "type": "text",
-                "tableRef": "Selected Answer",
+                "tableRef": "selectedAnswer",
                 "placeholder": "Enter selectedAnswer",
                 "id": "selectedAnswer",
                 "validation": ["", "trim", ""],
@@ -55,7 +47,7 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResult"
+                "id": "viewResults"
             }
         }
     }, {
@@ -64,16 +56,16 @@
         "stateName": {
             "page": "page",
             "json": {
-                "id": "viewResult"
+                "id": "viewResults"
             }
         }
     }],
     "apiCall": {
-        "url": "Result/save",
+        "url": "Results/save",
         "params": "_id"
     },
     "preApi": {
-        "url": "Result/getOne",
+        "url": "Results/getOne",
         "params": "_id"
     }
 

@@ -1,0 +1,16 @@
+<div class="sec">
+	<div>
+		<table class="table table-input" ng-if="model.length != 0">
+			<thead>
+				<tr>
+					<th ng-repeat="field in type.fields" ng-if="field.onView">{{field.name}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="data in model | filter:search.text ">
+					<td ng-repeat="field2 in type.fields" ng-if="field2.onView">{{data[field2.tableRef]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
