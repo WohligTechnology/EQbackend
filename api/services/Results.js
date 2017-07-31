@@ -35,7 +35,7 @@ schema.plugin(uniqueValidator);
 schema.plugin(timestamps);
 module.exports = mongoose.model('Results', schema);
 
-var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "user", "user", "testName", "testName"));
+var exports = _.cloneDeep(require("sails-wohlig-service")(schema, "user testName", "user testName"));
 var model = {
 
     findOneResults: function (data, callback) {

@@ -4,41 +4,43 @@
     "pageType": "view",
     "sendIdWithCreate": true,
     "urlFields": ["_id"],
-   "fields": [{
-        "name": "User Name",
-        "type":"fkListView",
-        "isSort": "",
-        "tableRef": "user"
-    },
-    {
-        "name": "Test Name",
-        "isSort": "",
-        "tableRef": "testName"
-    }
-   ],
+    "fields": [{
+            "name": "User Name",
+            "type": "fkListView",
+            "isSort": "",
+            "tableRef": "user"
+        },
+        {
+            "name": "Test Name",
+            "isSort": "",
+            "tableRef": "testName",
+            "field": "name"
+        }
+    ],
     "action": [{
-        "name": "edit",
-        "icon": "fa-pencil",
-        "buttonClass": "btn-primary",
-        "type": "page",
-        "action": "editResults",
-        "fieldsToSend": {
-            "_id": "_id"
+            "name": "edit",
+            "icon": "fa-pencil",
+            "buttonClass": "btn-primary",
+            "type": "page",
+            "action": "editResults",
+            "fieldsToSend": {
+                "_id": "_id"
+            }
+        },
+        {
+            "name": "delete",
+            "icon": "fa-trash",
+            "buttonClass": "btn-danger",
+            "type": "apiCallConfirm",
+            "title": "Delete Answer",
+            "content": "Are you sure you want to delete Answer?",
+            "api": "Results/delete",
+            "fieldsToSend": {
+                "name": "_id",
+                "value": "_id"
+            }
         }
-    }, 
-    {
-        "name": "delete",
-        "icon": "fa-trash",
-        "buttonClass": "btn-danger",
-        "type": "apiCallConfirm",
-        "title": "Delete Answer",
-        "content": "Are you sure you want to delete Answer?",
-        "api": "Results/delete",
-        "fieldsToSend": {
-            "name": "_id",
-            "value": "_id"
-        }
-    }],
+    ],
     "button": [{
         "name": "Create",
         "icon": "plus",
