@@ -8,7 +8,9 @@
             "name": "User Name",
             "type": "fkListView",
             "isSort": "",
-            "tableRef": "user"
+            "tableRef": "user",
+            "condition": "name"
+
         },
         {
             "name": "Test Name",

@@ -659,11 +659,17 @@ firstapp.directive('viewField', function ($http, $filter) {
             }
             $scope.form = {};
             $scope.objectDepth = function () {
-                if (_.isObjectLike($scope.storeValue[$scope.storeObj.tableRef])) {
+                if ($scope.storeObj.condition) {
+                    $scope.form.model = $scope.storeValue[$scope.storeObj.tableRef];
+                    // if ($scope.storeObj.condition == 'name') {
+                    //     $scope.form.model = $scope.storeValue[$scope.storeObj.tableRef];
+                    // }
+                } else if (_.isObjectLike($scope.storeValue[$scope.storeObj.tableRef])) {
+                    console.log("StoreVale: ", $scope.storeValue[$scope.storeObj.tableRef]);
                     if ($scope.storeValue[$scope.storeObj.tableRef]) {
                         $scope.form.model = $scope.storeValue[$scope.storeObj.tableRef][$scope.storeObj.field];
                         $scope.storeValue = $scope.storeValue[$scope.storeObj.tableRef][$scope.storeObj.field];
-                        if (_.isObjectLike($scope.storeValue)) {
+                        if (_.isObjectLike($scope.storeObj)) {
                             $scope.objectDepth();
                         }
                     }
@@ -678,6 +684,7 @@ firstapp.directive('viewField', function ($http, $filter) {
                 $scope.form.model = $scope.value[$scope.type.tableRef];
             }
 
+            console.log("form.model: ", $scope.form.model);
             $scope.template = "views/viewField/" + $scope.type.type + ".html";
         }
     };
