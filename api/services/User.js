@@ -172,8 +172,7 @@ var model = {
         });
     },
 
-    profileFromPhoneNo: function (data, callback, getGoogle) {
-
+    profileFromPhoneNo: function (data, callback) {
         User.findOne({
             mobile: data.phone
         }).exec(function (err, data) {
